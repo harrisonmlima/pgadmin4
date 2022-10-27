@@ -12,8 +12,6 @@ services:
     image: postgres:14.5
     ports:
       - 27017:27017
-    depends_on:
-      - pgadmin
     networks:
       - produto_net
     volumes:
@@ -26,6 +24,8 @@ services:
       - 16543:80
     networks:
       - produto_net
+    depends_on:
+      - postsql
     volumes:
       - /root/Docker/pgadmin4/postsql:/data/db
     environment:
