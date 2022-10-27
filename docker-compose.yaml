@@ -1,0 +1,34 @@
+version: '3'
+
+volumes:
+  postsql:
+
+networks:
+  produto_net:
+    driver: bridge
+
+services:
+  postsql:
+    image: postgres:14.5
+    ports:
+      - 27017:27017
+    depends_on:
+      - pgadmin
+    networks:
+      - produto_net
+    volumes:
+      - postsql:/data/db
+    environment:
+      - POSTGRES_PASSWORD=postpwd
+  pgadmin:
+    image: pgadmin4
+    ports:
+      - 16543:80
+    networks:
+      - produto_net
+    volumes:
+      - postsql:/data/db
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postuser@postuser.com
+      - PGADMIN_DEFAULT_PASSWORD=postpwd
+
