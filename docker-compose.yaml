@@ -17,7 +17,7 @@ services:
     networks:
       - produto_net
     volumes:
-      - postsql:/data/db
+      - /root/Docker/pgadmin4/postsql:/data/db
     environment:
       - POSTGRES_PASSWORD=postpwd
   pgadmin:
@@ -27,7 +27,7 @@ services:
     networks:
       - produto_net
     volumes:
-      - postsql:/data/db
+      - /root/Docker/pgadmin4/postsql:/data/db
     environment:
       - PGADMIN_DEFAULT_EMAIL=postuser@postuser.com
       - PGADMIN_DEFAULT_PASSWORD=postpwd
